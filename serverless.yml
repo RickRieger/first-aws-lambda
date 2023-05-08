@@ -1,4 +1,4 @@
-service: aws-node-rest-api
+service: lambda-practice
 
 provider:
   name: aws
@@ -18,13 +18,12 @@ functions:
       - http:
           path: /
           method: post
-
 resources:
   Resources:
     TodoTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: TodoTable
+        TableName: TodoTableFun
         BillingMode: PAY_PER_REQUEST
         AttributeDefinitions:
           - AttributeName: id

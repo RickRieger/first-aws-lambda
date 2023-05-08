@@ -5,5 +5,5 @@
 ```
 npm i -g serverless
 npm i typescript
-
+serverless config credentials --provider aws --key some_key --secret some_secret
 ```
