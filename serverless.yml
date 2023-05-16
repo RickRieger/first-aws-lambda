@@ -1,15 +1,15 @@
-service: lambda-practice
+service: lambda-todo-api
 
 provider:
   name: aws
-  runtime: nodejs12.x
+  runtime: nodejs18.x
   lambdaHashingVersion: "20201221"
   iamRoleStatements:
     - Effect: Allow
       Action:
         - dynamodb:*
       Resource:
-        - arn:aws:dynamodb:us-east-1:432754786374:table/TodoTable
+        - arn:aws:dynamodb:us-east-1:432754786374:table/MyTable
 
 functions:
   addTodo:
@@ -18,12 +18,24 @@ functions:
       - http:
           path: /
           method: post
+  fetchTodos:
+    handler: build/fetchTodos.handler
+    events:
+      - http:
+          path: /get-all-todos
+          method: get
+  deleteTodo:
+    handler: build/deleteTodo.handler
+    events:
+      - http:
+          path: /deleteTodo/{id}
+          method: delete
 resources:
   Resources:
-    TodoTable:
+    MyTable:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: TodoTableFun
+        TableName: MyTable
         BillingMode: PAY_PER_REQUEST
         AttributeDefinitions:
           - AttributeName: id

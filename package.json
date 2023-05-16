@@ -17,9 +17,13 @@
   },
   "homepage": "https://github.com/RickRieger/first-aws-lambda#readme",
   "dependencies": {
-    "aws-sdk": "^2.1373.0",
+    "@aws-sdk/client-dynamodb": "^3.329.0",
+    "@aws-sdk/lib-dynamodb": "^3.329.0",
     "serverless": "^3.30.1",
     "typescript": "^5.0.4",
     "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/uuid": "^9.0.1"
   }
 }
